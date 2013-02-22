@@ -1,5 +1,6 @@
-{Robot, User, Adapter, TextMessage} = require('hubot')
+{User, Robot, Adapter, Message, TextMessage, Response} = require('hubot')
 AppleScript = require('applescript')
+path = require('path')
 
 Redis = require("redis")
 Pubsub = Redis.createClient()
@@ -9,12 +10,11 @@ class iMessageAdapter extends Adapter
   send: (envelope, strings...) ->
     user = envelope.user.id
     if user in @allowedUsers
+      script = path.resolve(__dirname, 'sendMessage.scpt')
       for message in strings
-        AppleScript.execFile '/Users/michaelwalker/Dropbox/Code/hubot-imessage/sendMessage.scpt',
+        AppleScript.execFile script,
           [user, message],
           (err, rtn) ->
-            if (err)
-              console.log "Failed!", err
 
   reply: (envelope, strings...) ->
     @send envelope, strings...
@@ -24,9 +24,13 @@ class iMessageAdapter extends Adapter
     Pubsub.on 'message', (channel, dataString) =>
       data = JSON.parse(dataString)
       if data.user in @allowedUsers
-        user = new User(data.user, {name: data.user, room:"iMessage"})#@userForId data.user name: 'iMessage', room: 'iMessage'
-        message = new TextMessage user, data.message, 'messageId'
-        @receive message
+        user = @userForId data.user
+        user.name = data.user
+        user.room = "iMessage"
+        user.TextMessage = TextMessage
+
+        msg = "#{@robot.name} #{data.message}"
+        @receive new TextMessage(user, msg)
     @emit 'connected'
 
 exports.use = (robot) ->
