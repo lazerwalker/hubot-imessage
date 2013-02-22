@@ -6,6 +6,12 @@
     "github hubot imessage applescript adapter"
   ],
   "description": "An iMessage (and general AppleScript) adapter for hubot",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/tombell/hubot-twilio/raw/master/LICENSE"
+    }
+  ],
   "main": "./src/imessage.coffee",
   "repository": {
     "type": "git",
@@ -14,9 +20,14 @@
   "dependencies": {
     "applescript": ">=0.2.1",
     "redis": ">=0.7.2",
-    "hiredis": ">=0.1.14"
+    "hiredis": ">=0.1.14",
+    "hubot": ">=2.4.6"
   },
   "devDependencies": {
     "coffee-script": "latest"
+  },
+
+  "engines": {
+    "node": ">= 0.8.x"
   }
 }
