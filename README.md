@@ -57,8 +57,8 @@ In the selection dropdown, click "Choose Script". Find and select
 6. Messages.app is now configured to accept iMessages from any user, but Hubot
 will only repsond to commands sent from iMessage users in its whitelist.
 Hubot reads in a comma-separated list of iMessage IDs from the environment
-variable HUBOT_IMESSAGE_HANDLES to know who to trust. iMessage IDs typically 
-take the format of `+15551234` or `E:steve@mac.com`. 
+variable HUBOT_IMESSAGE_HANDLES to know who to trust. iMessage IDs typically
+take the format of `+15551234` or `E:steve@mac.com`.
 You can easily set this from your Terminal with something like:
 
   export HUBOT_IMESSAGE_HANDLES="+15551234,E:steve@mac.com"
@@ -91,6 +91,28 @@ server.
 * If your computer is in sleep mode, Hubot won't respond immediately. However,
 the iMessages you send will queue up; when your computer comes awake, Hubot will
 process and respond to messages in the order in which they were received.
+
+* When using Hubot in a chat room setting, many commands require you to type
+Hubot's name before the command. If you enter `help` to get a list of commands,
+many will list the prefix, but you do NOT need to enter it.
+
+
+Extending
+=========
+All iMessage-specific functionality for hubot-imessage lives in AppleScript
+scripts rather than the core CoffeeScript code, meaning it would be really easy
+to adapt to support any arbitrary AppleScript-based I/O flow.
+
+To send incoming text to Hubot, just run the messageReceiver.coffee script
+with three arguments: the user ID of the sender (any string, provided it's
+whitelisted in the HUBOT_IMESSAGE_HANDLES env variable), the message to
+be sent, and a friendly name for the sender. If Hubot is running, it will
+receive the message.
+
+When Hubot is ready to send a message out to a user, it calls sendMessage.scpt
+with two arguments: the user ID of the user (corresponding to the user ID passed
+in with a received message) and the message to send. You can easily replace that
+with your own custom AppleScript that takes in those same arguments.
 
 
 Contribute
