@@ -37,31 +37,31 @@ requires some additional setup.
 new Apple ID at https://appleid.apple.com/cgi-bin/WebObjects/MyAppleId.woa/wa/createAppleId
 and sign in to it from your desktop Messages.app.
 
-2. Open $HUBOT_PATH/node_modules/hubot-imessage/src/sendMessage.scpt (here, and all
-other times $HUBOT_PATH is mentioned, replace it with the actual path to your Hubot
-instance) in AppleScript Editor (located in /Applications/Utilities). On line 6,
- replace "$HUBOT_PATH" with the full path to your base Hubot dir.
+2. Open `$HUBOT_PATH/node_modules/hubot-imessage/src/sendMessage.scpt` (here, and all
+other times `$HUBOT_PATH` is mentioned, replace it with the actual path to your Hubot
+instance) in AppleScript Editor (located in `/Applications/Utilities`). On line 6,
+ replace `$HUBOT_PATH` with the full path to your base Hubot dir.
 
 3. In order for Messages.app to properly route conversations to Hubot, it needs to
 be set up to run a few AppleScripts in response to events. Open up Messages.app,
 then its Preferences pane from the title menu. Go to the Alerts tab.
 
 4. Select the event "Text Invitation". Check the box for "Run an AppleScript",
-and select "Auto Accept.applescript" from the dropdown menu.
+and select `Auto Accept.applescript` from the dropdown menu.
 
 5. Select the event "Message Received". Check the box for "Run an AppleScript".
 In the selection dropdown, click "Choose Script". Find and select
-"messageReceived.scpt", which is located in $HUBOT_PATH/node_modules/hubot-imessage/src
+`messageReceived.scpt`, which is located in `$HUBOT_PATH/node_modules/hubot-imessage/src`
 (and which you should have already edited, as per the above section).
 
 6. Messages.app is now configured to accept iMessages from any user, but Hubot
 will only repsond to commands sent from iMessage users in its whitelist.
 Hubot reads in a comma-separated list of iMessage IDs from the environment
-variable HUBOT_IMESSAGE_HANDLES to know who to trust. iMessage IDs typically
+variable `HUBOT_IMESSAGE_HANDLES` to know who to trust. iMessage IDs typically
 take the format of `+15551234` or `E:steve@mac.com`.
 You can easily set this from your Terminal with something like:
 
-  export HUBOT_IMESSAGE_HANDLES="+15551234,E:steve@mac.com"
+    export HUBOT_IMESSAGE_HANDLES=+15551234,E:steve@mac.com
 
 
 Usage
@@ -105,7 +105,7 @@ to adapt to support any arbitrary AppleScript-based I/O flow.
 
 To send incoming text to Hubot, just run the messageReceiver.coffee script
 with three arguments: the user ID of the sender (any string, provided it's
-whitelisted in the HUBOT_IMESSAGE_HANDLES env variable), the message to
+whitelisted in the `HUBOT_IMESSAGE_HANDLES` env variable), the message to
 be sent, and a friendly name for the sender. If Hubot is running, it will
 receive the message.
 
