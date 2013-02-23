@@ -37,7 +37,7 @@ requires some additional setup.
 new Apple ID at https://appleid.apple.com/cgi-bin/WebObjects/MyAppleId.woa/wa/createAppleId
 and sign in to it from your desktop Messages.app.
 
-2. Open `$HUBOT_PATH/node_modules/hubot-imessage/src/sendMessage.scpt` (here, and all
+2. Open `$HUBOT_PATH/node_modules/hubot-imessage/src/messageReceived.scpt` (here, and all
 other times `$HUBOT_PATH` is mentioned, replace it with the actual path to your Hubot
 instance) in AppleScript Editor (located in `/Applications/Utilities`). On line 6,
  replace `$HUBOT_PATH` with the full path to your base Hubot dir.
@@ -51,8 +51,8 @@ and select `Auto Accept.applescript` from the dropdown menu.
 
 5. Select the event "Message Received". Check the box for "Run an AppleScript".
 In the selection dropdown, click "Choose Script". Find and select
-`messageReceived.scpt`, which is located in `$HUBOT_PATH/node_modules/hubot-imessage/src`
-(and which you should have already edited, as per the above section).
+`messageReceived.scpt`, located in `$HUBOT_PATH/node_modules/hubot-imessage/src`
+(you should have already found and edited this file in step 1).
 
 6. Messages.app is now configured to accept iMessages from any user, but Hubot
 will only repsond to commands sent from iMessage users in its whitelist.
@@ -61,7 +61,7 @@ variable `HUBOT_IMESSAGE_HANDLES` to know who to trust. iMessage IDs typically
 take the format of `+15551234` or `E:steve@mac.com`.
 You can easily set this from your Terminal with something like:
 
-    export HUBOT_IMESSAGE_HANDLES=+15551234,E:steve@mac.com
+    `export HUBOT_IMESSAGE_HANDLES=+15551234,E:steve@mac.com`
 
 
 Usage
@@ -70,7 +70,7 @@ Run Hubot with the following command:
 
     $HUBOT_PATH/node_modules/.bin/hubot -a imessage
 
-I'd probably recommend creating an alias for it, or adding $HUBOT_PATH/node_modules/.bin
+I'd probably recommend creating an alias for it, or adding `$HUBOT_PATH/node_modules/.bin`
 to your $PATH.
 
 From there, you can treat it just as you would any normal Hubot instance with
