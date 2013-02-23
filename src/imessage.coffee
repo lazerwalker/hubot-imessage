@@ -23,11 +23,10 @@ class iMessageAdapter extends Adapter
     @allowedUsers = process.env.HUBOT_IMESSAGE_HANDLES.split(",")
     Pubsub.on 'message', (channel, dataString) =>
       data = JSON.parse(dataString)
-      if data.user in @allowedUsers
-        user = @userForId data.user
-        user.name = data.user
+      if data.userId in @allowedUsers
+        user = @userForId data.userId
+        user.name = data.name
         user.room = "iMessage"
-        user.TextMessage = TextMessage
 
         msg = "#{@robot.name} #{data.message}"
         @receive new TextMessage(user, msg)
