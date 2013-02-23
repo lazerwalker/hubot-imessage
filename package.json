@@ -9,7 +9,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/tombell/hubot-twilio/raw/master/LICENSE"
+      "url": "http://github.com/lazerwalker/hubot-imessage/raw/master/LICENSE"
     }
   ],
   "main": "./src/imessage.coffee",
