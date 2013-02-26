@@ -79,7 +79,7 @@ regards to installing custom scripts, etc.
 
 Warnings and Miscellanea
 ========================
-Typically, you'd host a Hubot on Heroku or something similar; requiring OS X
+Typically, you'd host a Hubot on Heroku or something similar, but requiring OS X
 makes that impossible. There are a few unfortunate snags I've found from running
 Hubot / hubot-imessage on a consumer desktop OS:
 
@@ -88,13 +88,15 @@ time. If you want to be able to send iMessages from your main account on your ho
 computer, you may want to set up a second machine to act as a dedicated Hubot
 server.
 
-* If your computer is in sleep mode, Hubot won't respond immediately. However,
-the iMessages you send will queue up; when your computer comes awake, Hubot will
+* Hubot won't respond to you while the computer running it is asleep. However,
+the commands you send will queue up. When your computer comes awake, Hubot will
 process and respond to messages in the order in which they were received.
 
 * When using Hubot in a chat room setting, many commands require you to type
-Hubot's name before the command. If you enter `help` to get a list of commands,
-many will list the prefix, but you do NOT need to enter it.
+Hubot's name before the command. Hubot-imessage eliminates that requirement
+for the sake of typing brevity. If you enter `help` to get a list of commands,
+some may still include mentioning Hubot's name in the usage instructions, but it
+is NOT necessary.
 
 * Apple makes no promises of real-time iMessage delivery, and occasionally there
 can be a slight delay (on the order of minutes) between when you send an iMessage
