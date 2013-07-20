@@ -98,14 +98,7 @@ for the sake of typing brevity. If you enter `help` to get a list of commands,
 some may still include mentioning Hubot's name in the usage instructions, but it
 is NOT necessary.
 
-* Apple makes no promises of real-time iMessage delivery, and occasionally there
-can be a slight delay (on the order of minutes) between when you send an iMessage
-from one device and when it's received by another. As far as I can tell, this isn't
-caused by Hubot or the Hubot iMessage adapter — it's a problem with Apple's servers.
-Anecdotally, it appears that Apple prioritizes messages that are part of active 
-conversations; if you've been chatting back and forth with Hubot in the past few 
-minutes, it seems that you're less likely to be hit by a random delay.
- 
+
 Extending
 =========
 All iMessage-specific functionality for hubot-imessage lives in AppleScript
