@@ -10,7 +10,7 @@ class iMessageAdapter extends Adapter
   send: (envelope, strings...) ->
     user = envelope.user.id
     if user in @allowedUsers
-      script = path.resolve(__dirname, 'sendMessage.scpt')
+      script = path.resolve(__dirname, 'Send iMessage.applescript')
       for message in strings
         AppleScript.execFile script,
           [user, message],
