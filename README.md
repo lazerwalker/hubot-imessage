@@ -6,12 +6,24 @@ Description
 This is an adapter for Hubot that lets you communicate with Hubot via Apple iMessage.
 
 
+
 Installation and Setup
 ======================
+
+### Requirements
 Since Apple doesn't (currently) offer an API for accessing the iMessage protocol,
 the only way Hubot can use iMessage is by communicating with Messages.app
 through AppleScript. As such, using hubot-imessage requires Hubot to be running
-on a machine with OS X 10.8 or newer.
+on a machine with OS X 10.8 or newer. You will also need a functioning node.js
+installation.
+
+**Warning**: It is possible the current code won't work if you are running Mountain Lion (OS X 10.8). If that's
+the case, you should check out the `legacy-support` tag. (If you can confirm or deny
+this, chiming in on the relevant [issue page](https://github.com/lazerwalker/hubot-imessage/pull/4)
+would be appreciated.)
+
+
+### Installation
 
 Download the [latest version of Hubot](https://github.com/github/hubot/archive/master.zip)
 (more info at https://github.com/github/hubot). Extract it somewhere, and then
