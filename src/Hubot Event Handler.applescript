@@ -2,9 +2,14 @@ using terms from application "Messages"
 	
 	on message received theMessage from theBuddy for theChat
 		set qMessage to quoted form of theMessage
-		set qHandle to handle of theBuddy
-		set qName to first name of theBuddy
-		set qScript to "$HUBOT_DIR/node_modules/hubot-imessage/src/messageReceiver.coffee"
+		set qHandle to quoted form of (handle of theBuddy as string)
+		set qScript to quoted form of "$HUBOT_PATH/node_modules/hubot-imessage/src/messageReceiver.coffee"
+		
+		if (first name of theBuddy) is missing value then
+			set qName to quoted form of ""
+		else
+			set qName to quoted form of (first name of theBuddy as string)
+		end if
 		
 		do shell script "export PATH=/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin && " & qScript & " " & qHandle & " " & qMessage & " " & qName
 	end message received
@@ -90,4 +95,3 @@ using terms from application "Messages"
 	end completed file transfer
 	
 end using terms from
-
